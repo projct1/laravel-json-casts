@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'data',
         'password',
     ];
 
@@ -41,8 +42,10 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'data' => 'json',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'data->custom_value' => 'bool',
         ];
     }
 }
